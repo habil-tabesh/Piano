@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Piono </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <div class="keys">
+    <div style="color: black; background-color: rgba(255, 255, 255, 0.451);" data-key="65" class="key">
+      <kbd>A</kbd>
+      <span  class="sound">Do</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span style="color: white" class="sound">Re</span>
+    </div>
+    <div style="color: black; background-color: rgba(255, 255, 255, 0.451);" data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">Me</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span style="color: white" class="sound">Fa</span>
+    </div>
+    <div style="color: black; background-color: rgba(255, 255, 255, 0.451);" data-key="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">So</span>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <span style="color: white" class="sound">La</span>
+    </div>
+    <div style="color: black; background-color: rgba(255, 255, 255, 0.451);" data-key="74" class="key">
+      <kbd>J</kbd>
+      <span class="sound">Si</span>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <span style="color: white" class="sound">Do</span>
+    </div>
+    <div style="color: black; background-color: rgba(255, 255, 255, 0.451);" data-key="76" class="key">
+      <kbd>L</kbd>
+      <span class="sound">Re</span>
+    </div>
+  </div>
+
+  <audio data-key="65" src="sounds/piano c.wav"></audio>
+  <audio data-key="83" src="sounds/piano d.m4a"></audio>
+  <audio data-key="68" src="sounds/piano e.m4a"></audio>
+  <audio data-key="70" src="sounds/piano f.m4a"></audio>
+  <audio data-key="71" src="sounds/piano g.m4a"></audio>
+  <audio data-key="72" src="sounds/piano a.m4a"></audio>
+  <audio data-key="74" src="sounds/piano b.m4a"></audio>
+  <audio data-key="75" src="sounds/piano c2.wav"></audio>
+  <audio data-key="76" src="sounds/piano d2-new.mp3"></audio>
+
+  
+<script>
+  //remember cameCase
+  function playSound(e) { 
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key =  document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if(!audio) return;
+    audio.currentTime = 0;
+    audio.play();
+    key.classList.add('playing');
+  }
+
+
+function removeTransition(e) {
+  
+  if(e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
+}
+
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+window.addEventListener('keydown', playSound);
+</script>
+
+
+</body>
+</html>
