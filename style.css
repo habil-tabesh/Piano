@@ -20,16 +20,16 @@ html {
   }
   
   .key {
-    border: .2rem solid rgb(0, 0, 0);
+    /* border: 0.0001rem solid rgb(0, 0, 0); */
     border-radius: rem;
-    margin:0.3rem;
+    margin:0.rem;
     font-size: 10.5rem;
     padding: 1rem .5rem;
     transition: all .07s ease-in-out;
     width: 10rem;
     text-align: center;
     color: white;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     text-shadow: 0 0 .5rem rgb(0, 0, 0);
   }
   
